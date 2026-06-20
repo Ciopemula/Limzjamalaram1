@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jam Alarm Limz</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+body{
+margin:0;
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+background-size:cover;
+background-position:center;
+}
+
+header{
+font-family:Orbitron;
+font-size:28px;
+padding:20px;
+background:#000b;
+}
+
+.page{
+display:none;
+padding:20px;
+padding-bottom:90px;
+}
+
+.active{
+display:block;
+}
+
+.box{
+background:#000c;
+margin:15px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 15px #00ff88;
+}
+
+#clock,#count{
+font-family:Orbitron;
+font-size:42px;
+margin:20px;
+}
+
+button,input{
+padding:10px;
+margin:5px;
+border-radius:10px;
+border:0;
+}
+
+button{
+background:#00ff88;
+}
+
+.item{
+background:#222;
+padding:12px;
+margin:10px;
+border-radius:15px;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#111e;
+padding:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+⏰ Jam Alarm Limz
+</header>
+
+
+
+<div id="alarm" class="page active">
+
+<div class="box">
+
+<h2>⏰ Alarm</h2>
+
+<div id="clock">
+00:00:00
+</div>
+
+
+<input type="time" id="alarmTime" step="1">
+
+<br>
+
+<input id="alarmName" placeholder="Nama alarm">
+
+
+<br>
+
+<input type="file" id="music" accept="audio/*">
+
+
+<br>
+
+Volume
+
+<input type="range" id="vol"
+min="0" max="1" step="0.1" value="1">
+
+
+<br>
+
+
+<button onclick="addAlarm()">
+Tambah Alarm
+</button>
+
+
+<div id="list"></div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div id="timer" class="page">
+
+
+<div class="box">
+
+
+<h2>⏳ Mesin Pewaktu</h2>
+
+
+<div id="count"
+style="font-family:Orbitron;font-size:45px;cursor:pointer">
+
+00 : 00 : 00
+
+</div>
+
+
+<p>Klik angka untuk atur</p>
+
+
+<button onclick="startTimer()">
+▶ Mulai
+</button>
+
+
+<button onclick="stopTimer()">
+⏹ Hentikan
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div id="world" class="page">
+
+<div class="box">
+
+<h2 style="font-family:Orbitron">
+🌎 JAM DUNIA
+</h2>
+
+
+
+<div class="item">
+🇮🇩 Indonesia
+<br>
+<span id="indo">00:00:00</span>
+</div>
+
+
+
+<div class="item">
+🇵🇸 Palestina
+<br>
+<span id="palestine">00:00:00</span>
+</div>
+
+
+
+<div class="item">
+🇷🇺 Rusia
+<br>
+<span id="russia">00:00:00</span>
+</div>
+
+
+
+<div class="item">
+🇯🇵 Jepang
+<br>
+<span id="japan">00:00:00</span>
+</div>
+
+
+
+<div class="item">
+🇩🇪 Jerman
+<br>
+<span id="german">00:00:00</span>
+</div>
+
+
+
+<div class="item">
+🇰🇵 Korea Utara
+<br>
+<span id="northkorea">00:00:00</span>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div id="profil" class="page">
+
+
+<div class="box"
+style="background:linear-gradient(135deg,#001f3f,#003300)">
+
+
+<h1 style="font-family:Orbitron;color:#00ff88">
+👤 PROFIL PEMILIK
+</h1>
+
+
+<div style="font-size:60px">
+👑
+</div>
+
+
+<h2>
+Febrianto Putra P.
+</h2>
+
+
+
+<div class="item">
+🎂 Umur
+<h3>16 Tahun</h3>
+</div>
+
+
+
+<div class="item">
+🎮 Hoby
+<h3>Ngga tau</h3>
+</div>
+
+
+
+<div class="item">
+📅 Ultah
+<h3>23 Feb 2010</h3>
+</div>
+
+
+
+<div class="item">
+
+<h3 style="color:#00ff88">
+📱 Sosial Media
+</h3>
+
+<p>
+✈️ Telegram : limzchiter
+</p>
+
+<p>
+📸 Instagram : ntoooo23
+</p>
+
+<p>
+🎵 TikTok : Pam setelah after 🤓☝
+</p>
+
+
+</div>
+
+
+<hr>
+
+
+<h3 style="color:#00ff88">
+🚀 APLIKASI DIBUAT
+</h3>
+
+
+<p>
+Minggu,21 Juni 2026
+</p>
+
+
+<p>
+🇮🇩 Indonesia
+<br>
+Jawa Tengah - Purwokerto
+</p>
+
+
+</div>
+
+
+</div>
+<div class="box">
+
+<h3>🖼️ Background</h3>
+
+<input type="file" id="bg" accept="image/*">
+
+</div>
+
+
+
+<div class="bottom">
+
+<button onclick="openPage('alarm')">⏰</button>
+
+<button onclick="openPage('timer')">⏳</button>
+
+<button onclick="openPage('world')">🌎</button>
+
+<button onclick="openPage('profil')">👤</button>
+
+</div>
+
+
+
+<audio id="audio"></audio>
+
+
+
+<script>
+
+
+let alarms =
+JSON.parse(localStorage.getItem("alarms")) || [];
+
+
+let lagu="";
+
+
+
+function openPage(x){
+
+document.querySelectorAll(".page")
+.forEach(e=>e.classList.remove("active"));
+
+
+document.getElementById(x)
+.classList.add("active");
+
+}
+
+
+
+
+
+music.onchange=()=>{
+
+let f=music.files[0];
+
+if(f){
+
+lagu=URL.createObjectURL(f);
+
+}
+
+};
+
+
+
+
+
+
+
+function jam(){
+
+let d=new Date();
+
+
+
+clock.innerHTML =
+d.toLocaleTimeString();
+
+
+
+indo.innerHTML =
+d.toLocaleTimeString("id-ID");
+
+
+
+palestine.innerHTML =
+d.toLocaleTimeString("en-US",
+{
+timeZone:"Asia/Gaza"
+});
+
+
+
+russia.innerHTML =
+d.toLocaleTimeString("en-US",
+{
+timeZone:"Europe/Moscow"
+});
+
+
+
+japan.innerHTML =
+d.toLocaleTimeString("ja-JP");
+
+
+
+german.innerHTML =
+d.toLocaleTimeString("de-DE");
+
+
+
+northkorea.innerHTML =
+d.toLocaleTimeString("en-US",
+{
+timeZone:"Asia/Pyongyang"
+});
+
+
+
+cekAlarm();
+
+
+}
+
+
+setInterval(jam,1000);
+
+
+
+
+
+
+
+function saveAlarm(){
+
+localStorage.setItem(
+"alarms",
+JSON.stringify(alarms)
+);
+
+}
+
+
+
+
+
+function addAlarm(){
+
+
+if(!alarmTime.value)return;
+
+
+
+alarms.push({
+
+time:alarmTime.value,
+
+name:
+alarmName.value || "Alarm",
+
+on:true
+
+});
+
+
+
+saveAlarm();
+
+showAlarm();
+
+
+}
+
+
+
+
+
+function showAlarm(){
+
+
+list.innerHTML="";
+
+
+alarms.forEach((a,i)=>{
+
+
+list.innerHTML+=`
+
+<div class="item">
+
+<b>${a.name}</b>
+
+<br>
+
+⏰ ${a.time}
+
+<br>
+
+<button onclick="toggleAlarm(${i})">
+ON/OFF
+</button>
+
+
+<button onclick="hapusAlarm(${i})">
+Hapus
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+}
+
+
+
+
+function toggleAlarm(i){
+
+alarms[i].on =
+!alarms[i].on;
+
+saveAlarm();
+
+showAlarm();
+
+}
+
+
+
+
+
+function hapusAlarm(i){
+
+alarms.splice(i,1);
+
+saveAlarm();
+
+showAlarm();
+
+}
+
+
+
+
+
+
+function cekAlarm(){
+
+
+let d=new Date();
+
+
+let sekarang =
+
+String(d.getHours()).padStart(2,"0")
++":"+
+String(d.getMinutes()).padStart(2,"0")
++":"+
+String(d.getSeconds()).padStart(2,"0");
+
+
+
+alarms.forEach(a=>{
+
+
+if(a.on && a.time==sekarang){
+
+
+audio.src=lagu;
+
+audio.volume=vol.value;
+
+
+audio.loop=true;
+
+audio.play();
+
+
+
+if(navigator.vibrate){
+
+navigator.vibrate(500);
+
+}
+
+
+
+alert("⏰ "+a.name);
+
+
+
+a.on=false;
+
+
+saveAlarm();
+
+showAlarm();
+
+
+}
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+let waktu=0;
+
+let timer;
+
+
+
+count.onclick=function(){
+
+let x =
+prompt(
+"Masukkan jam:menit:detik\nContoh 00:05:00"
+);
+
+
+if(!x)return;
+
+
+
+let p=x.split(":");
+
+
+
+waktu =
+(Number(p[0])*3600)
++
+(Number(p[1])*60)
++
+Number(p[2]);
+
+
+
+tampilTimer();
+
+};
+
+
+
+
+
+
+
+function startTimer(){
+
+
+clearInterval(timer);
+
+
+
+timer=setInterval(()=>{
+
+
+tampilTimer();
+
+
+
+if(waktu<=0){
+
+
+clearInterval(timer);
+
+
+alert("⏳ Waktu habis");
+
+
+return;
+
+}
+
+
+
+waktu--;
+
+
+},1000);
+
+
+}
+
+
+
+
+
+
+
+function stopTimer(){
+
+
+clearInterval(timer);
+
+
+waktu=0;
+
+
+tampilTimer();
+
+
+}
+
+
+
+
+
+
+
+function tampilTimer(){
+
+
+let j =
+Math.floor(waktu/3600);
+
+
+
+let m =
+Math.floor((waktu%3600)/60);
+
+
+
+let d =
+waktu%60;
+
+
+
+count.innerHTML =
+
+String(j).padStart(2,"0")
++
+" : "
++
+String(m).padStart(2,"0")
++
+" : "
++
+String(d).padStart(2,"0");
+
+
+}
+
+
+
+
+
+
+
+
+
+// BACKGROUND SIMPAN
+
+
+
+bg.onchange=function(){
+
+
+let file=bg.files[0];
+
+
+if(file){
+
+
+let reader=new FileReader();
+
+
+
+reader.onload=function(e){
+
+
+localStorage.setItem(
+"background",
+e.target.result
+);
+
+
+
+document.body.style.backgroundImage =
+"url("+e.target.result+")";
+
+
+
+}
+
+
+
+reader.readAsDataURL(file);
+
+
+
+}
+
+}
+
+
+
+
+
+
+
+let bgLama =
+localStorage.getItem("background");
+
+
+
+if(bgLama){
+
+
+document.body.style.backgroundImage =
+"url("+bgLama+")";
+
+
+}
+
+
+
+
+
+
+showAlarm();
+
+
+</script>
+
+
+</body>
+
+</html>
